@@ -1,0 +1,23 @@
+# Simulation details 
+read_conf       f               # read data from a previous simulation (t = ture / f = false) 
+first_run       t               # reading from first run (->true)/ restarted run (->false)
+cyc_prod        100000          # in thousands
+cyc_equil       100000          # in thousands
+nsamp           50              # in thousands
+  
+nhs             0       # number of uncharged particles 
+nions           32      # number of charged partilces 
+ndipoles        968     # number of dipoles 
+
+charge          160.0   # [-], squared
+dip_mom         4.0     # [-], squared
+
+sigma           1.0     # particle diameter 
+lambda          1.0     # coupling parameter 
+
+# Thermodynamic variables
+temperature     298.15   # [K] Note: this input paramter is meaningless for hard sphere fluids
+density         0.6786   # [-] 
+
+
+ 
