@@ -1,0 +1,57 @@
+# Input file for MC simulations
+# - Start comments with '#' in col 0
+# - Blanks col 0 are ignored!
+# - Add features in main_mod::read_inputfile in main.f90
+
+# Simulation details 
+
+# number of equilibration cycles
+nequilibration  5E4
+# number of production cycles
+nproduction     5E6
+# number of particles (this is ignored, when configuration is read from file)
+npart           500
+# number of species (currently supported: 2, tested: 1)
+nspecies        1
+# ensemble [nvt, npt, ein]
+ensemble        npt
+# initial configuration
+# [1 = from file , 2 = lattice, 3 = fcc, 4 = bcc]
+init_cfg        2
+file_cfg        file.dat
+
+# units
+# simulation units. [1 = reduced, 2 = si]
+units           1
+
+# Simulation cell 
+# Perform volume changes isotropically (=scale lengths) [0 = no, 1 = yes]
+isotropic       1
+
+# Thermodynamic variables
+temperature     0.618 # [-]
+# density acts as initial density in npt
+# (this is ignored when configuration is read from file)
+density         1.1
+# pressure is ignored for ensemble = nvt, ein
+#pressure        5.0E-02
+pressure        1.00
+
+# potential cut-off
+rc              2.75
+rc_max          5.0
+# Set the cut off to a constant value during the simulation [0 = no, 1 = yes]
+# If the simulation is NPT, non-constant cut-offs will be replaced by the radius of
+# the smallest incscribed sphere (smallest side for orthorhombic cells)
+rc_const        1
+
+# sampling frequency: sample every x'th cycle
+stdout_freq     10000
+h_freq          0
+vol_freq        10
+press_freq      0
+ener_freq       10
+coord_freq      0
+
+# Transition matrix method
+transition_matrix       1

@@ -1,0 +1,23 @@
+# Simulation details 
+read_conf       f   
+first_run       t               # reading from first run (->true)/ restarted run (->false)
+cyc_prod        100000          # in thousands
+cyc_equil       100000          # in thousands
+nsamp           50              # in thousands
+  
+nhs             0
+nions           32
+ndipoles        968
+
+charge          160.0   # dimless, squared
+dip_mom         4.0     # dimless, squared
+
+sigma           1.0 
+lambda          0.95 
+
+# Thermodynamic variables
+temperature     298.15   # [K]
+density         0.6786   # [-]
+
+
+ 

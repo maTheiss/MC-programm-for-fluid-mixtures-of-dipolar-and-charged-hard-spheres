@@ -1,0 +1,132 @@
+\hypertarget{namespaceglobals__mod}{}\doxysection{globals\+\_\+mod Module Reference}
+\label{namespaceglobals__mod}\index{globals\_mod@{globals\_mod}}
+
+
+global variables and important subroutines ~\newline
+  
+
+
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceglobals__mod_aaec68d76cafd56832d69da38bcd5bf0c}\label{namespaceglobals__mod_aaec68d76cafd56832d69da38bcd5bf0c}} 
+subroutine \mbox{\hyperlink{namespaceglobals__mod_aaec68d76cafd56832d69da38bcd5bf0c}{init\+\_\+globals}} (read\+\_\+conf, first\+\_\+run, nhs\+\_\+in, nions\+\_\+in, ndipoles\+\_\+in, density\+\_\+in, Temp\+\_\+in, sigma\+\_\+in)
+\begin{DoxyCompactList}\small\item\em initialize system \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a92f69c789bf64722b60069395bfb6333}\label{namespaceglobals__mod_a92f69c789bf64722b60069395bfb6333}} 
+integer(ik) function, dimension(2) \mbox{\hyperlink{namespaceglobals__mod_a92f69c789bf64722b60069395bfb6333}{return\+\_\+charge\+\_\+index}} (pid\+\_\+in)
+\begin{DoxyCompactList}\small\item\em returns charge index(number) of given particle index(number) \end{DoxyCompactList}\item 
+real(rk) function \mbox{\hyperlink{namespaceglobals__mod_aa2d04156aaf1a8f023b3d230044374f0}{squared\+\_\+distance}} (pos1, pos2)
+\begin{DoxyCompactList}\small\item\em return squared distance including nearest image convention \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a670de940b8c7ff5fb9a9ce315303005f}\label{namespaceglobals__mod_a670de940b8c7ff5fb9a9ce315303005f}} 
+logical function \mbox{\hyperlink{namespaceglobals__mod_a670de940b8c7ff5fb9a9ce315303005f}{is\+\_\+overlapping}} (pid\+\_\+in)
+\begin{DoxyCompactList}\small\item\em check if particle with pid\+\_\+in overlaps with other particles \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_ad1ea9c2c536efa88af617f20cd8cf3bc}\label{namespaceglobals__mod_ad1ea9c2c536efa88af617f20cd8cf3bc}} 
+subroutine \mbox{\hyperlink{namespaceglobals__mod_ad1ea9c2c536efa88af617f20cd8cf3bc}{check\+\_\+overlap}}
+\begin{DoxyCompactList}\small\item\em check if particles from input files are overlapping \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a2b7cc4c7aa42ca0cdf1b7f9b11933255}\label{namespaceglobals__mod_a2b7cc4c7aa42ca0cdf1b7f9b11933255}} 
+subroutine \mbox{\hyperlink{namespaceglobals__mod_a2b7cc4c7aa42ca0cdf1b7f9b11933255}{set\+\_\+lattice}} ()
+\begin{DoxyCompactList}\small\item\em set configuration to simple cubic lattice \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a19dcddf9a07ad97b6002a9f20dc1d699}\label{namespaceglobals__mod_a19dcddf9a07ad97b6002a9f20dc1d699}} 
+real(rk), dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceglobals__mod_a19dcddf9a07ad97b6002a9f20dc1d699}{particle\+\_\+positions}}
+\begin{DoxyCompactList}\small\item\em list containing hs positions (dim = 3,npar) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_ae0627125a415eb00d099e8557df43062}\label{namespaceglobals__mod_ae0627125a415eb00d099e8557df43062}} 
+real(rk), dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceglobals__mod_ae0627125a415eb00d099e8557df43062}{charge\+\_\+positions}}
+\begin{DoxyCompactList}\small\item\em containing charge positions (dim = 3,ncharges) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a7636e38954e466239d538d9be470e8eb}\label{namespaceglobals__mod_a7636e38954e466239d538d9be470e8eb}} 
+real(rk), dimension(\+:), allocatable \mbox{\hyperlink{namespaceglobals__mod_a7636e38954e466239d538d9be470e8eb}{sigma\+\_\+list}}
+\begin{DoxyCompactList}\small\item\em containing hs diameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_ab9b01f84831e5875219a00e6a9dab059}\label{namespaceglobals__mod_ab9b01f84831e5875219a00e6a9dab059}} 
+real(rk), dimension(\+:), allocatable \mbox{\hyperlink{namespaceglobals__mod_ab9b01f84831e5875219a00e6a9dab059}{charge\+\_\+list}}
+\begin{DoxyCompactList}\small\item\em containing charge strength \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_ab23724caa3d44744cb413a5344e2e67f}\label{namespaceglobals__mod_ab23724caa3d44744cb413a5344e2e67f}} 
+integer(ik), dimension(\+:), allocatable \mbox{\hyperlink{namespaceglobals__mod_ab23724caa3d44744cb413a5344e2e67f}{species\+\_\+list}}
+\begin{DoxyCompactList}\small\item\em containing species index (dim = npart) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a93b9e60a8358bbc299d22854fc5f9054}\label{namespaceglobals__mod_a93b9e60a8358bbc299d22854fc5f9054}} 
+integer(ik), dimension(\+:), allocatable \mbox{\hyperlink{namespaceglobals__mod_a93b9e60a8358bbc299d22854fc5f9054}{length}}
+\begin{DoxyCompactList}\small\item\em containing species index (dim = npart) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a8ad9c79ed540283ff1071be7196c968d}\label{namespaceglobals__mod_a8ad9c79ed540283ff1071be7196c968d}} 
+integer(ik) \mbox{\hyperlink{namespaceglobals__mod_a8ad9c79ed540283ff1071be7196c968d}{npart}}
+\begin{DoxyCompactList}\small\item\em total number of particles \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a512f89330641fd462b2146a767cf0587}\label{namespaceglobals__mod_a512f89330641fd462b2146a767cf0587}} 
+integer(ik) \mbox{\hyperlink{namespaceglobals__mod_a512f89330641fd462b2146a767cf0587}{nhs}}
+\begin{DoxyCompactList}\small\item\em number of hard sphere particles \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_acfbb53483c250ebfa0fb19cd35b50fba}\label{namespaceglobals__mod_acfbb53483c250ebfa0fb19cd35b50fba}} 
+integer(ik) \mbox{\hyperlink{namespaceglobals__mod_acfbb53483c250ebfa0fb19cd35b50fba}{nions}}
+\begin{DoxyCompactList}\small\item\em number of ions \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a48d206fc39d0573279d6bf1a408814a3}\label{namespaceglobals__mod_a48d206fc39d0573279d6bf1a408814a3}} 
+integer(ik) \mbox{\hyperlink{namespaceglobals__mod_a48d206fc39d0573279d6bf1a408814a3}{ndipoles}}
+\begin{DoxyCompactList}\small\item\em number of dipoles \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_aef593af8167e918774fbef40ff0d5005}\label{namespaceglobals__mod_aef593af8167e918774fbef40ff0d5005}} 
+integer(ik) \mbox{\hyperlink{namespaceglobals__mod_aef593af8167e918774fbef40ff0d5005}{ncharges}}
+\begin{DoxyCompactList}\small\item\em number of charges (= nions + ndipoles) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_aa35d0bff1846e4623bbc669abb9b62c7}\label{namespaceglobals__mod_aa35d0bff1846e4623bbc669abb9b62c7}} 
+real(rk), parameter {\bfseries dipole\+\_\+sepa} = 0.\+1
+\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a37df53b3298522455b858a4de9a82c70}\label{namespaceglobals__mod_a37df53b3298522455b858a4de9a82c70}} 
+real(rk) \mbox{\hyperlink{namespaceglobals__mod_a37df53b3298522455b858a4de9a82c70}{boxlength}}
+\begin{DoxyCompactList}\small\item\em length of the cubic simulation box \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_ac44940bd949e2889e744b88f4248c454}\label{namespaceglobals__mod_ac44940bd949e2889e744b88f4248c454}} 
+real(rk) \mbox{\hyperlink{namespaceglobals__mod_ac44940bd949e2889e744b88f4248c454}{rc}}
+\begin{DoxyCompactList}\small\item\em cut off radius \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a3f4e36288bbcc21e1d59d1adae0c39dc}\label{namespaceglobals__mod_a3f4e36288bbcc21e1d59d1adae0c39dc}} 
+real(rk) \mbox{\hyperlink{namespaceglobals__mod_a3f4e36288bbcc21e1d59d1adae0c39dc}{rc2}}
+\begin{DoxyCompactList}\small\item\em squared cut off radius \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_aafa3211b686f5d041bfd64166e886671}\label{namespaceglobals__mod_aafa3211b686f5d041bfd64166e886671}} 
+real(rk) \mbox{\hyperlink{namespaceglobals__mod_aafa3211b686f5d041bfd64166e886671}{density}}
+\begin{DoxyCompactList}\small\item\em read in density \mbox{[}-\/\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a5c6d2c59aa4d1b0f0a185d5385380047}\label{namespaceglobals__mod_a5c6d2c59aa4d1b0f0a185d5385380047}} 
+real(rk) \mbox{\hyperlink{namespaceglobals__mod_a5c6d2c59aa4d1b0f0a185d5385380047}{volume}}
+\begin{DoxyCompactList}\small\item\em simulation volume; V = boxlength$\ast$$\ast$3 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a7bd61f7dd17e7b272f8cbf46f99d422e}\label{namespaceglobals__mod_a7bd61f7dd17e7b272f8cbf46f99d422e}} 
+real(rk) \mbox{\hyperlink{namespaceglobals__mod_a7bd61f7dd17e7b272f8cbf46f99d422e}{temp}}
+\begin{DoxyCompactList}\small\item\em Temperature \mbox{[}K\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a1d1831a131e19c36f1044fad50cab222}\label{namespaceglobals__mod_a1d1831a131e19c36f1044fad50cab222}} 
+real(rk) \mbox{\hyperlink{namespaceglobals__mod_a1d1831a131e19c36f1044fad50cab222}{beta}}
+\begin{DoxyCompactList}\small\item\em contains inverse Temp. \+: 1// \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_aa25eaec56add9bcb9c64eba8ef37845e}\label{namespaceglobals__mod_aa25eaec56add9bcb9c64eba8ef37845e}} 
+real(rk) {\bfseries frac}
+\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a5fb5d16f06b78274a034906b0f8d70f1}\label{namespaceglobals__mod_a5fb5d16f06b78274a034906b0f8d70f1}} 
+integer(ik) \mbox{\hyperlink{namespaceglobals__mod_a5fb5d16f06b78274a034906b0f8d70f1}{nsamp}}
+\begin{DoxyCompactList}\small\item\em sample every x cycles \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a083962e385eb8331f1f066051046d743}\label{namespaceglobals__mod_a083962e385eb8331f1f066051046d743}} 
+real(rk) {\bfseries q\+\_\+ions}
+\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a75d733cb5fd99bb079cd0cacbf41e09c}\label{namespaceglobals__mod_a75d733cb5fd99bb079cd0cacbf41e09c}} 
+real(rk) \mbox{\hyperlink{namespaceglobals__mod_a75d733cb5fd99bb079cd0cacbf41e09c}{mu\+\_\+dipoles}}
+\begin{DoxyCompactList}\small\item\em dimensionless charge of ions and dimensionless dipole moment \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceglobals__mod_a44fe6b418237adf2ce4ac9985fd6d23b}\label{namespaceglobals__mod_a44fe6b418237adf2ce4ac9985fd6d23b}} 
+real(rk) \mbox{\hyperlink{namespaceglobals__mod_a44fe6b418237adf2ce4ac9985fd6d23b}{lambda}}
+\begin{DoxyCompactList}\small\item\em perturbation parameter \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+global variables and important subroutines ~\newline
+ 
+
+\begin{DoxyAuthor}{Author}
+M.\+Theiss 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceglobals__mod_aa2d04156aaf1a8f023b3d230044374f0}\label{namespaceglobals__mod_aa2d04156aaf1a8f023b3d230044374f0}} 
+\index{globals\_mod@{globals\_mod}!squared\_distance@{squared\_distance}}
+\index{squared\_distance@{squared\_distance}!globals\_mod@{globals\_mod}}
+\doxysubsubsection{\texorpdfstring{squared\_distance()}{squared\_distance()}}
+{\footnotesize\ttfamily real(rk) function globals\+\_\+mod\+::squared\+\_\+distance (\begin{DoxyParamCaption}\item[{real(rk), dimension(3), intent(in)}]{pos1,  }\item[{real(rk), dimension(3), intent(in)}]{pos2 }\end{DoxyParamCaption})}
+
+
+
+return squared distance including nearest image convention 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em pos1} & position of particle 1 \\
+\hline
+\mbox{\texttt{ in}}  & {\em pos2} & position of particle 2 \\
+\hline
+\end{DoxyParams}
