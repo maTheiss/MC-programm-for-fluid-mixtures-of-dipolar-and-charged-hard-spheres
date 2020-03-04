@@ -1,13 +1,14 @@
 # MC Simulation Programm   
 
 This is a Monte Carlo Simulation Programm (Fortran implementation) to compute the 
-  - internal energy (with Ewald summation) for fluid mixtures of dipolar and charged hard spheres 
+  - internal energy (with Ewald summation) 
   - radial distribution function 
   - relative permittivity 
   - 
+for fluid mixtures of dipolar and charged hard spheres 
 
 Note: 
-  - The coupling parameter λ linearly incorporates the electrostatic pair interactions (within the acceptance criterion) to compute a λ-scaled canonical ensemble average of the internal energy 
+  - The coupling parameter λ linearly incorporates the electrostatic pair interactions (within the acceptance criterion) to compute a λ-scaled canonical ensemble average of the internal energy (necessary for thermodynamic integration, see papers) 
 
 Written by: M. Theiss 
 
