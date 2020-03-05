@@ -8,6 +8,7 @@ module mean_RDF_mod
    public:: mean_RDF
 contains
  
+  !> calc. radial distribution function 
   subroutine mean_RDF ( g_RDF ) 
     integer(ik):: ref_part 
     integer(ik):: n_part_k = 0

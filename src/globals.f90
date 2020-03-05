@@ -29,13 +29,11 @@ module globals_mod
   real(rk) :: volume !< simulation volume; V = boxlength**3
   real(rk) :: Temp  !< Temperature [K]
   real(rk) :: beta  !< contains inverse Temp. : 1//
-  real(rk) :: frac
+  real(rk) :: frac   !< ion mole fraction 
   integer(ik):: nsamp !< sample every x cycles
   real(rk)   :: q_ions, mu_dipoles !< dimensionless charge of ions and dimensionless dipole moment
   real(rk)  :: lambda  !< perturbation parameter 
   
-!   character*30 :: in_file
- 
 contains
 
 !---------------------------------------------------------------------------------------------------------------------

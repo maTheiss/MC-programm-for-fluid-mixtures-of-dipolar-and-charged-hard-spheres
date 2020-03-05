@@ -6,8 +6,7 @@ module nvt_mod
   use globals_mod      
   use displace_particle_mod, only: displace_particle 
   use rotate_particle_mod, only: rotate_particle 
-  use particle_swap_mult_mod, only: particle_swap_mult
-!   use mean_RDF_mod, only: mean_RDF
+!  use mean_RDF_mod, only: mean_RDF
   use ES_Fourier_mod
   use Energy_mod
   use rw_files_mod    
@@ -22,6 +21,7 @@ module nvt_mod
 
 contains
 
+  !> NVT main routine  
   subroutine nvt (nequil, nprod)
     integer(ik) , intent(inout) :: nequil, nprod
     integer(ik) :: ncycles
@@ -66,14 +66,6 @@ contains
      U_cyc(:) = 0.0_rk
      total_att(:) = 0_ik 
     
-    !initialize EXPi,SUMQEXPV for swap 
-    call TotalEnergy( UREAL1, USCH1,  USDIP1, UFOURIER1, USURF1, Utot1) 
-    !print*,''
-    !print*,'swapping particles.. '
-    !print*,''
-    !do i = 1, 50000
-    !  call particle_swap_mult( dUreal, dUFourier, ener_delt)   
-    !end do 
     total_attempted_swap = 0 
     total_accepted_swap  = 0
     
@@ -116,10 +108,7 @@ contains
           ! decide which move? 
           call random_number(which_move) 
           if (which_move .le. 0.5)  then
-          !if (which_move .le. 0.5 .and. which_move .gt. 0.01)  then
             call displace_particle ( dUreal, dUFourier, ener_delt)  
-          !else if (which_move .le. 0.01)  then
-          !  call particle_swap_mult( dUreal, dUFourier, ener_delt)   
           else 
             call rotate_particle ( dUreal, dUFourier, ener_delt)    
           end if              
@@ -133,20 +122,17 @@ contains
         end do 
          
      
+!        !calc. radial distribution function 
 !         if (mod(icycl,4) == 0 .and. is_production == .true.  ) then
-! !           print*, icycl
-! !           print*, 'calc. RDF:'
+!          print*, 'calc. RDF:'
 !          call mean_RDF( gr )
 !          mean = mean + 1_ik
 !          gr(:) = gr(:) + gr(:)
 !         end if
-!          gr(:) = gr(:) / real(mean,rk) 
+!         gr(:) = gr(:) / real(mean,rk) 
                  
         if ( mod(icycl,nsamp) == 0) then
-          print*, icycl 
           print*, 'Total att:', moves 
-!           print*, 'running_ener:', running_ener/real(npart,rk)
-!           print*, 'REAL,FOURIER:', UREAL1/real(npart,rk) , UFOURIER1/real(npart,rk)  
 
           !saving average of running energy  
           sum_total_att = sum(total_att(1:block))
@@ -176,19 +162,6 @@ contains
         if ( mod(icycl,ncycles/nsamp_blocks) == 0) then
           !counter for sampling blocks 
           block = block + 1_ik 
-          
-          !check energy  
-!          call TotalEnergy( UREAL, USCH,  USDIP, UFOURIER, USURF, Utot)  
-!            if (abs(running_ener - (UREAL - USCH -  USDIP + UFOURIER + USURF )) .gt. 1.d-6 ) then 
-!             print*, 'Problems Energy: '
-!             print*, ' -running_ener:', running_ener/real(npart,rk) 
-!             print*, '  real,fourier:', UREAL1/real(npart,rk), UFOURIER1/real(npart,rk) 
-!             print*, ' -Utot:        ', Utot/real(npart,rk) 
-!             print*, '  real,fourier:', UREAL/real(npart,rk), UFOURIER/real(npart,rk) 
-!!              print*, USCH/real(npart,rk)  , USDIP/real(npart,rk) 
-!             print*, 'dev in % & delta '
-!             print*, abs(running_ener - Utot)/abs(Utot)*100.0_rk , (running_ener - Utot)/real(npart,rk)  
-!            end if  
         end if 
         
       end do !cycle loop for equil. or prod. 
@@ -204,14 +177,15 @@ contains
     !save results: U_average, ..  
     call store_results(nequil, nprod, nsamp_blocks, Usum(1:nsamp_blocks), total_att(1:nsamp_blocks), Utot) 
  
-! WRITE (72,*) ' '
-! write (*,*) 'RDF_mean.dat...' 
-! OPEN (72,FILE = './output_file/RDF_mean.dat') 
-!   DO i = 1,  256      
-!     WRITE (72,'(i6,10f18.10)')  i,  gr(i)
-!   END DO 
-! WRITE (72,*) ' '
-! CLOSE (72)   
+!    !results for radial distribution function 
+!    WRITE (72,*) ' '
+!    write (*,*) 'RDF_mean.dat...' 
+!    OPEN (72,FILE = './output_file/RDF_mean.dat') 
+!     DO i = 1,  256      
+!       WRITE (72,'(i6,10f18.10)')  i,  gr(i)
+!     END DO 
+!    WRITE (72,*) ' '
+!    CLOSE (72)   
 
     CLOSE (plt_file_num)
     CLOSE (re_file_num)

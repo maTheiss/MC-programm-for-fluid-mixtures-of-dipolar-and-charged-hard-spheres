@@ -27,15 +27,11 @@ contains
     integer(ik) :: pid !< id of selected particle
     integer(ik) :: chargeid(2) !< id(s) of ion (dipole) charge(s)
     integer(ik) :: stion, endion, Nc
-!     real(rk)    :: st, ct, sp, cp 
     real(rk) :: ran, acceptance  !< random numbers
     real(rk) :: ener_old, ener_new !< old/new energy values
     real(rk) :: charge_pos_old_x(2), charge_pos_old_y(2), charge_pos_old_z(2) !< dummies for old positions of charges ion/dipole 
-!     complex(rk), dimension(0:Kmax, ncharges):: EXPX_OLD
-!     complex(rk), dimension(-Kmax:Kmax, ncharges):: EXPY_OLD, EXPZ_OLD
     complex(rk), allocatable, dimension(:,:):: EXPX_OLD, EXPY_OLD, EXPZ_OLD
     complex(rk), dimension(Nkvec) :: SUMQEXPV_OLD
-! !     real(rk), intent(inout)     :: SUMQX, SUMQY, SUMQZ  
     real(rk):: UREAL, UREALo, USCH,  USDIP, UFOURIER, USURF  !< energy  in ewald sum (ES)
     
     !Rotation
@@ -45,10 +41,6 @@ contains
     real(rk),dimension(2,2)    :: M
     real(rk),dimension(2)      :: T
     
-    
-!     real(rk):: ener_delt2, ener_old2, ener_new2 
-!     real(rk):: Utot_old, Utot_new
-     
     ener_delt = 0.0_rk
     ener_new = 0.0_rk
     ener_old = 0.0_rk
@@ -57,8 +49,6 @@ contains
     
     ! pick random dipole
     call random_number (ran)
-!     pid = int(ran * real(ndipoles, rk), ik) + 1_ik
-!     pid = pid + nions + nhs 
     pid = int(ran * real(npart, rk), ik) + 1_ik
      
     ! increase count
@@ -83,11 +73,8 @@ contains
     allocate (EXPY_OLD(-Kmax:Kmax,1:Nc))
     allocate (EXPZ_OLD(-Kmax:Kmax,1:Nc))
     
-!       call DispRot_Energy ( pid, LENGTH(pid), stion, endion, UREALo, USCH,  USDIP, UFOURIERo, USURF) 
-      call RealMolecule_move(  stion, endion,  UREALo)
-!       call RealInteract_move(  pid,  UREALo) !(etw. langsamer)
-!       UREALo = UREALo * CoulCombo 
-      ener_old = UREALo !- USCH -  USDIP + UFOURIERo + USURF
+    call RealMolecule_move(  stion, endion,  UREALo)
+    ener_old = UREALo !- USCH -  USDIP + UFOURIERo + USURF
       
     EXPX_OLD(:,1:Nc) = EXPX(:,stion:endion)
     EXPY_OLD(:,1:Nc) = EXPY(:,stion:endion)

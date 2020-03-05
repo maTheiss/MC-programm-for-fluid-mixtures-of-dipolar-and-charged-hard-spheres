@@ -1,3 +1,5 @@
+!> \brief module containing simulation parameters and constants 
+!> \author M.Theiss 
 module basic_parameters_mod
 use working_prec_mod , only: rk, ik 
   implicit none

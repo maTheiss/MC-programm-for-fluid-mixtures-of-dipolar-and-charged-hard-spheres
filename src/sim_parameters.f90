@@ -1,4 +1,5 @@
-
+!> \brief module containing simulation parameters, variables, etc.   
+!> \author M.Theiss 
 module sim_parameters_mod
 use working_prec_mod , only: rk, ik 
 use basic_parameters_mod

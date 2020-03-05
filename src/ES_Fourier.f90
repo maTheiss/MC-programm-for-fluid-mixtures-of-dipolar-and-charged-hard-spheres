@@ -1,3 +1,5 @@
+!> \brief fourier contribution to total energy  
+!> \author M.Theiss 
  module ES_Fourier_mod
   use working_prec_mod, only: rk, ik
   use basic_parameters_mod
@@ -12,6 +14,9 @@
  
 contains
 
+!---------------------------------------------------------------------------------------------------------------------------------------
+!> fourier setup  
+!---------------------------------------------------------------------------------------------------------------------------------------
 subroutine Fourier_Setup(  ) 
 integer(ik):: i, j, k, Ksq 
 real(rk):: b
@@ -70,9 +75,9 @@ end do
 end subroutine Fourier_Setup
 
  
- 
- 
- 
+!---------------------------------------------------------------------------------------------------------------------------------------
+!> fourier move  
+!---------------------------------------------------------------------------------------------------------------------------------------
 subroutine Fourier_Move  ( i, EXPX_CH, EXPY_CH, EXPZ_CH, EXPX_NEW, &
                                                     EXPY_NEW, EXPZ_NEW, &
                                                     SUMQEXPV_in, SUMQEXPV_NEW, DU_FOURIER )
@@ -168,7 +173,9 @@ end subroutine Fourier_Move
 
 
 
-
+!---------------------------------------------------------------------------------------------------------------------------------------
+!> fourier move #2 (faster)  
+!---------------------------------------------------------------------------------------------------------------------------------------
 subroutine Fourier_Move2 ( Ns, Xn, Yn, Zn, CHARGEc,  &
                                     EXPX_in, EXPY_in, EXPZ_in, EXPX_NEW, EXPY_NEW, EXPZ_NEW, &
                                     SUMQEXPV_in, SUMQEXPV_NEW, DU_FOURIER )

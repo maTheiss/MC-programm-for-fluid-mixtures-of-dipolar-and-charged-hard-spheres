@@ -32,11 +32,8 @@ contains
     real(rk) :: position_old(3) !< dummy for old position of hard sphere
     real(rk) :: charge_position_old(3) !< dummy for old position of charge ion/dipole
     real(rk) :: charge_position_old2(3) !< dummy for old position of charge dipole
-!     complex(rk), dimension(0:Kmax, ncharges):: EXPX_OLD
-!     complex(rk), dimension(-Kmax:Kmax, ncharges):: EXPY_OLD, EXPZ_OLD
     complex(rk), allocatable, dimension(:,:):: EXPX_OLD, EXPY_OLD, EXPZ_OLD
     complex(rk), dimension(Nkvec) :: SUMQEXPV_OLD
-! !     real(rk), intent(inout)     :: SUMQX, SUMQY, SUMQZ  
     real(rk):: UREAL, UREALo, USCH,  USDIP, UFOURIER, USURF  !< energy  in ewald sum (ES)
     
     dUREAL = 0.0_rk
@@ -65,11 +62,8 @@ contains
     allocate (EXPZ_OLD(-Kmax:Kmax,1:Nc))
     
     if (species_list(pid) /= 1_ik) then  
-!       call DispRot_Energy ( pid, LENGTH(pid), stion, endion, UREAL, USCH,  USDIP, UFOURIER, USURF)  
       call RealMolecule_move(  stion, endion,  UREALo)
-!       call RealInteract_move(  pid,  UREALo) !(etw. langsamer)
-!       UREALo = UREALo !* CoulCombo 
-      ener_old = UREALo !- USCH -  USDIP + UFOURIERo + USURF
+      ener_old = UREALo 
       EXPX_OLD(:,1:Nc) = EXPX(:,stion:endion)
       EXPY_OLD(:,1:Nc) = EXPY(:,stion:endion)
       EXPZ_OLD(:,1:Nc) = EXPZ(:,stion:endion)  
@@ -123,7 +117,7 @@ contains
     end if 
        
      call DispRot_Energy ( pid, Nc, stion, endion, UREAL, USCH,  USDIP, UFOURIER, USURF)  
-     ener_new = UREAL + UFOURIER !- USCH -  USDIP + USURF 
+     ener_new = UREAL + UFOURIER 
     end if  
     
     ener_delt = ener_new - ener_old
