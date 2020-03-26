@@ -27,5 +27,5 @@ Engineering Data, 65 (2), 634-639 (2020)
 
 thermodynamic and simulation input parameters in INPUT.inp file
 
-1. compile with "make"
+1. compile with "make" (check Makefile and choose a suitable compiler and flags) 
 2. run with "./main INPUT.inp"
